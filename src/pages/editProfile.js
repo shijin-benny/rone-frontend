@@ -77,7 +77,7 @@ function EditPage() {
         <div className='grid grid-cols-3 grid-rows-auto m-10 h-auto bg-white border-t-2 shadow-lg '>
           <div className='col-span-1 border-r'>
             <div className='flex flex-col items-center mt-20 relative'>
-              <img className='rounded-full w-52 h-52' src="https://cdn-icons.flaticon.com/png/512/2202/premium/2202112.png?token=exp=1647249227~hmac=986511ed4a16c1d5c45161f5ac88ce31" alt="" />
+              <img className='rounded-full w-52 h-52' src="https://test-api-rone.herokuapp.com/profile/d21deab0-b0aa-42eb-a16d-98d4e57abd53-1647429260261.jpg" alt="" />
               <span className='m-2 font-semibold'>userName</span>
               <input type="file" name='image' className='mt-5 ml-5' ref={fileInput} onChange={handleFile} hidden accept=".png, .jpg, .jpeg" />
               <button className='px-4 py-2 font-semibold border-2 border-red-500 hover:bg-red-500 hover:text-white' onClick={selectFile}>Upload new Picture</button>
