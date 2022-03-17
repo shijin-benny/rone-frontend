@@ -55,11 +55,9 @@ function EditPage() {
         'content-type': 'multipart/form-data'
       }
     }
-    console.log(formData);
     axios.post('https://test-api-rone.herokuapp.com/editprofile', formData, config).then((response) => {
       setData(response.data)
     })
-
   }
   const [action,setAction] = useState({
     username:"hidden" ,
@@ -88,16 +86,16 @@ function EditPage() {
             <div className='mt-8'>
               <h1 className=' text-3xl font-bold'>Profile Settings</h1>
             </div>
-            <div className='mt-20 flex flex-col items-center'>
+            <div className='mt-20 mb-8 flex flex-col items-center'>
               <div className='relative'>
-              <span className="font-semibold">Username : </span>  <input type="text" value={details.username} className='w-96 h-10 border-b p-2 ' />
+              <span className="font-semibold">Username : </span><input type="text" value={details.username} className='w-96 h-10 border-b p-2 ' />
                 <span class="material-icons absolute right-1" onClick={()=>setAction({...action,username:"",button:""})}>
                   edit
                 </span>
               </div>
 
               <div className={`relative mt-2 ${action.username}`}>
-             <input type="text" name='username' placeholder='Name' className="w-96 h-10 border-2 p-2 border-green-300 " onChange={handleDetails} />
+             <input type="text" name='username' placeholder='Edit username ...' className="w-96 h-10 border-2 p-2 border-red-300 " onChange={handleDetails} />
                 <span class="material-icons absolute text-2xl right-1" onClick={()=>setAction({...action,username:"hidden"})}>
                   save
                 </span>
@@ -110,7 +108,7 @@ function EditPage() {
                 </span>
               </div>
               <div className={`relative mt-2 ${action.mobile}`}>
-              <input type="tel" name='mobile' placeholder='Mobile Number' className='mt-5 w-96 h-10 border-2 border-green-300 p-2' onChange={handleDetails} />
+              <input type="tel" name='mobile' placeholder='Edit Mobile Number ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
               <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,mobile:"hidden"})}>
                   save
                 </span>
@@ -123,7 +121,7 @@ function EditPage() {
                 </span>
               </div>
               <div className={`relative mt-2 ${action.email}`}>
-              <input type="email" name='email' placeholder='Email' className='mt-5 w-96 h-10 border-2 border-green-300 p-2' onChange={handleDetails} />
+              <input type="email" name='email' placeholder='Edit email ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
               <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,email:"hidden"})}>
                   save
                 </span>
@@ -137,7 +135,7 @@ function EditPage() {
                 </span>
               </div>
               <div className={`relative mt-2 ${action.location}`}>
-              <input type="text" name='location' placeholder='Edit Location' className='mt-5 w-96 h-10 border-2 border-green-300 p-2' onChange={handleDetails} />
+              <input type="text" name='location' placeholder='Edit Location ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
               <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,location:"hidden"})}>
                   save
                 </span>
@@ -150,7 +148,7 @@ function EditPage() {
                 </span>
                 </div>    
                 <div className={`relative mt-2 ${action.profession}`}>
-                <input type="text" name='profession' placeholder='Profession' className='mt-5 w-96 h-10 border-2 p-2 border-green-300' onChange={handleDetails} />
+                <input type="text" name='profession' placeholder='Edit Profession ...' className='mt-5 w-96 h-10 border-2 p-2 border-red-300' onChange={handleDetails} />
                 <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,profession:"hidden"})}>
                   save
                 </span>
@@ -163,20 +161,21 @@ function EditPage() {
                 </span>
              </div>
              <div className={`relative mt-2 ${action.address}`}>
-             <input type="text" name='address' placeholder='Address' className='mt-5 w-96 h-10 border-2 p-2' onChange={handleDetails} />
+             <input type="text" name='address' placeholder='Edit Address ...' className='mt-5 w-96 h-10 border-2 p-2 border-red-300' onChange={handleDetails} />
              <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,address:"hidden"})}>
                   save
                 </span>
              </div>
-             <div className='relative '>
-             <textarea name="bio" id="" cols="10" rows="3" className='w-96 mt-5 p-2' placeholder={`Bio : ${details.bio} `}></textarea>
-             <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,bio:"",button:""})}>
+             <div className='relative '> 
+             <span className="font-semibold">BIO : </span>
+             <input type="text" value={details.bio} className='mt-5 w-96 h-10 border-b p-2'/>
+             <span class="material-icons absolute  top-5" onClick={()=>setAction({...action,bio:"",button:""})}>
                   edit
                 </span>
                </div>
                <div className={`relative mt-2 ${action.bio}`}>
-               <textarea name="bio" id="" cols="10" rows="3" className='border-2 w-96 mt-5 p-2' placeholder='Bio' onChange={handleDetails}></textarea>
-               <span class="material-icons absolute text-2xl top-6" onClick={()=>setAction({...action,bio:"hidden"})}>
+               <textarea name="bio" id="" cols="10" rows="3" className='border-2 w-96 mt-5 p-2 border-red-300 ' placeholder='Edit bio...' onChange={handleDetails}></textarea>
+               <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,bio:"hidden"})}>
                   save
                 </span>
                </div>        
@@ -187,8 +186,6 @@ function EditPage() {
 
         </div>
       </div>
-
-
     </>
   )
 }
