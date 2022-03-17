@@ -20,7 +20,6 @@ function EditPage() {
       setDetails(res.data[0])
     })
   }, [])
-  console.log(details);
   const fileInput = useRef()
 
   const handleDetails = (event) => {
@@ -91,19 +90,20 @@ function EditPage() {
             </div>
             <div className='mt-20 flex flex-col items-center'>
               <div className='relative'>
-                <input type="text" value={details.username} className='w-96 h-10 border-b p-2 ' />
+              <span className="font-semibold">Username : </span>  <input type="text" value={details.username} className='w-96 h-10 border-b p-2 ' />
                 <span class="material-icons absolute right-1" onClick={()=>setAction({...action,username:"",button:""})}>
                   edit
                 </span>
               </div>
 
               <div className={`relative mt-2 ${action.username}`}>
-                <input type="text" name='username' placeholder='Name' className="w-96 h-10 border-2 p-2 border-green-300 " onChange={handleDetails} />
+             <input type="text" name='username' placeholder='Name' className="w-96 h-10 border-2 p-2 border-green-300 " onChange={handleDetails} />
                 <span class="material-icons absolute text-2xl right-1" onClick={()=>setAction({...action,username:"hidden"})}>
                   save
                 </span>
               </div>
               <div className='relative '>
+              <span className="font-semibold">Mobile : </span>  
               <input type="tel"  value={details.mobile} className='mt-5 w-96 h-10 border-b p-2'/>
               <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,mobile:"",button:""})}>
                   edit
@@ -116,6 +116,7 @@ function EditPage() {
                 </span>
               </div>
               <div className='relative '>
+              <span className="font-semibold">Email : </span>  
               <input type="email" value={details.email} className='mt-5 w-96 h-10 border-b p-2'  />
               <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,email:"",button:""})}>
                   edit
@@ -129,6 +130,7 @@ function EditPage() {
               </div>
 
               <div className='relative '>
+              <span className="font-semibold">Location : </span>  
               <input value={details.location} className='mt-5 w-96 h-10 border-b p-2'  />
               <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,location:"",button:""})}>
                   edit
@@ -136,11 +138,12 @@ function EditPage() {
               </div>
               <div className={`relative mt-2 ${action.location}`}>
               <input type="text" name='location' placeholder='Edit Location' className='mt-5 w-96 h-10 border-2 border-green-300 p-2' onChange={handleDetails} />
-              <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,profession:"hidden"})}>
+              <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,location:"hidden"})}>
                   save
                 </span>
               </div>  
               <div className='relative '>
+              <span className="font-semibold">Profession : </span>                 
               <input type="text" value={details.profession} className='mt-5 w-96 h-10 border-b p-2 '  />
               <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,profession:"",button:""})}>
                   edit
@@ -153,6 +156,7 @@ function EditPage() {
                 </span>
                   </div>        
                   <div className='relative '>
+                  <span className="font-semibold">Address : </span>  
                   <input type="text" value={details.address} className='mt-5 w-96 h-10 border-b p-2'/>
                   <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,address:"",button:""})}>
                   edit
@@ -165,14 +169,14 @@ function EditPage() {
                 </span>
              </div>
              <div className='relative '>
-             <textarea name="bio" id="" cols="10" rows="3" className='w-96 mt-5 p-2' placeholder={details.bio}></textarea>
+             <textarea name="bio" id="" cols="10" rows="3" className='w-96 mt-5 p-2' placeholder={`Bio : ${details.bio} `}></textarea>
              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,bio:"",button:""})}>
                   edit
                 </span>
                </div>
                <div className={`relative mt-2 ${action.bio}`}>
                <textarea name="bio" id="" cols="10" rows="3" className='border-2 w-96 mt-5 p-2' placeholder='Bio' onChange={handleDetails}></textarea>
-               <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,bio:"hidden"})}>
+               <span class="material-icons absolute text-2xl top-6" onClick={()=>setAction({...action,bio:"hidden"})}>
                   save
                 </span>
                </div>        
