@@ -58,7 +58,6 @@ function EditPage() {
     }
     console.log(formData);
     axios.post('https://test-api-rone.herokuapp.com/editprofile', formData, config).then((response) => {
-      console.log(response);
       setData(response.data)
     })
 
@@ -71,6 +70,7 @@ function EditPage() {
     profession: "hidden",
     address: "hidden",
     bio: "hidden",
+    button:"hidden"
   }) 
   return (
     <>
@@ -92,7 +92,7 @@ function EditPage() {
             <div className='mt-20 flex flex-col items-center'>
               <div className='relative'>
                 <input type="text" value={details.username} className='w-96 h-10 border-b p-2 ' />
-                <span class="material-icons absolute right-1" onClick={()=>setAction({...action,username:""})}>
+                <span class="material-icons absolute right-1" onClick={()=>setAction({...action,username:"",button:""})}>
                   edit
                 </span>
               </div>
@@ -105,7 +105,7 @@ function EditPage() {
               </div>
               <div className='relative '>
               <input type="tel"  value={details.mobile} className='mt-5 w-96 h-10 border-b p-2'/>
-              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,mobile:""})}>
+              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,mobile:"",button:""})}>
                   edit
                 </span>
               </div>
@@ -117,7 +117,7 @@ function EditPage() {
               </div>
               <div className='relative '>
               <input type="email" value={details.email} className='mt-5 w-96 h-10 border-b p-2'  />
-              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,email:""})}>
+              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,email:"",button:""})}>
                   edit
                 </span>
               </div>
@@ -130,7 +130,7 @@ function EditPage() {
 
               <div className='relative '>
               <input value={details.location} className='mt-5 w-96 h-10 border-b p-2'  />
-              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,location:""})}>
+              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,location:"",button:""})}>
                   edit
                 </span>
               </div>
@@ -142,7 +142,7 @@ function EditPage() {
               </div>  
               <div className='relative '>
               <input type="text" value={details.profession} className='mt-5 w-96 h-10 border-b p-2 '  />
-              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,profession:""})}>
+              <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,profession:"",button:""})}>
                   edit
                 </span>
                 </div>    
@@ -154,7 +154,7 @@ function EditPage() {
                   </div>        
                   <div className='relative '>
                   <input type="text" value={details.address} className='mt-5 w-96 h-10 border-b p-2'/>
-                  <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,address:""})}>
+                  <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,address:"",button:""})}>
                   edit
                 </span>
              </div>
@@ -166,7 +166,7 @@ function EditPage() {
              </div>
              <div className='relative '>
              <textarea name="bio" id="" cols="10" rows="3" className='w-96 mt-5 p-2' placeholder={details.bio}></textarea>
-             <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,bio:""})}>
+             <span class="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,bio:"",button:""})}>
                   edit
                 </span>
                </div>
@@ -175,8 +175,8 @@ function EditPage() {
                <span class="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,bio:"hidden"})}>
                   save
                 </span>
-               </div>          
-             <button className='mt-8 px-8 py-1 bg-red-500 text-white text-xl font-semibold hover:bg-black ' onClick={saveProfile}>Save</button>
+               </div>        
+             <button className={`mt-8 px-8 py-1 bg-red-500 text-white text-xl font-semibold hover:bg-black ${action.button}`} onClick={saveProfile}>Save</button>
             </div>
 
           </div>
