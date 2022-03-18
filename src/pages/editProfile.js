@@ -74,9 +74,9 @@ function EditPage() {
     <>
       <div className='w-full h-screen'>
         <div className='grid grid-cols-3 grid-rows-auto m-10 h-auto shadow-2xl rounded-2xl'>
-          <div className='col-span-1 rounded-2xl'>       
+          <div className='col-span-1 rounded-2xl bg-[url("https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-corporate-unveiling-ceremony-propaganda-poster-x-display-stand-background-material-image_156774.jpg")] bg-cover'>       
             <div className='flex flex-col items-center mt-20 relative'>          
-              <img className='rounded-full w-64 h-64 border-4' src="https://test-api-rone.herokuapp.com/profile/d21deab0-b0aa-42eb-a16d-98d4e57abd53-1647429260261.jpg" alt="" />
+              <img className='rounded-full w-64 h-64 border-4 border-red-500' src="https://test-api-rone.herokuapp.com/profile/d21deab0-b0aa-42eb-a16d-98d4e57abd53-1647429260261.jpg" alt="" />
               <span className='m-2 font-semibold text-white text-2xl'>{details.username}</span>
               <input type="file" name='image' className='mt-5 ml-5' ref={fileInput} onChange={handleFile} hidden accept=".png, .jpg, .jpeg" />
               <button className='px-4 py-2 rounded-2xl font-semibold border-4 bg-black text-white hover:border-green-500 hover:translate-y-1 ' onClick={selectFile}>Upload new Picture</button>
