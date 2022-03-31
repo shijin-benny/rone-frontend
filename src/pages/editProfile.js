@@ -16,9 +16,10 @@ function EditPage() {
   const [details, setDetails] = useState([])
 
   useEffect(() => {
-    axios.get('https://test-api-rone.herokuapp.com/profilePage').then((res) => {
-       setDetails(res.data[0])
-    })
+
+    // axios.get('https://test-api-rone.herokuapp.com/profilePage').then((res) => {
+    //    setDetails(res.data[0])
+    // })
   }, [])
 
   console.log(details);
@@ -56,36 +57,43 @@ function EditPage() {
         'content-type': 'multipart/form-data'
       }
     }
-    axios.post('https://test-api-rone.herokuapp.com/editprofile', formData, config).then((response) => {
-      alert(response)
+    axios.post('https://arclifs-services.herokuapp.com/paymentUser',
+     {
+       "userId":"TE3MECZoo"
+    }
+    ).then((response) => {
       console.log(response);
-      setData(response.data)
     })
-    // axios.post('http://localhost:5001/editprofile',formData,config).then((response)=>{
+    // axios.post('https://test-api-rone.herokuapp.com/editprofile', formData, config).then((response) => {
+    //   alert("Updated successfully")
     //   setData(response.data)
     // })
+
+
+
   }
-  const [action,setAction] = useState({
-    username:"hidden" ,
+  const [action, setAction] = useState({
+    username: "hidden",
     mobile: "hidden",
     location: "hidden",
-    email:"hidden",
+    email: "hidden",
     profession: "hidden",
     address: "hidden",
     bio: "hidden",
-    button:"hidden"
-  }) 
+    button: "hidden"
+  })
+  console.log(details);
 
   return (
     <>
       <div className='w-full h-screen'>
         <div className='grid grid-cols-3 grid-rows-auto m-10 h-auto shadow-2xl rounded-2xl'>
-          <div className='col-span-1 rounded-2xl bg-[url("https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-corporate-unveiling-ceremony-propaganda-poster-x-display-stand-background-material-image_156774.jpg")] bg-cover'>       
-            <div className='flex flex-col items-center mt-20 relative'>          
-              <img className='rounded-full w-64 h-64 border-4 border-red-500' src={`https://test-api-rone.herokuapp.com/${details.file}`} alt="" />
+          <div className='col-span-1 rounded-2xl bg-[url("https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-corporate-unveiling-ceremony-propaganda-poster-x-display-stand-background-material-image_156774.jpg")] bg-cover'>
+            <div className='flex flex-col items-center mt-20 relative'>
+              <img className='rounded-full w-64 h-64 border-4 object-fill  ' src={`https://test-api-rone.herokuapp.com/${details.file}`} alt="" />
               <span className='m-2 font-semibold text-white text-2xl'>{details.username}</span>
               <input type="file" name='image' className='mt-5 ml-5' ref={fileInput} onChange={handleFile} hidden accept=".png, .jpg, .jpeg" />
-              <button className='px-4 py-2 rounded-2xl font-semibold border-4 bg-black text-white hover:border-green-500 hover:translate-y-1 ' onClick={selectFile}>Upload new Picture</button>
+              <button className='px-4 py-2 rounded-3xl font-semibold border-4 bg-red-500 text-white hover:border-green-500 hover:translate-y-1 ' onClick={selectFile}>Upload new Picture</button>
             </div>
 
           </div>
@@ -95,107 +103,107 @@ function EditPage() {
             </div>
             <div className='mt-20 mb-8 flex flex-col items-center'>
               <div className='relative'>
-              <span className="font-semibold text-lg">Username : </span><input type="text" value={details.username} className='w-96 h-10 border-b p-2 ' />
-                <span className="material-icons absolute right-1" onClick={()=>setAction({...action,username:"",button:""})}>
+                <span className="font-semibold text-lg">Username : </span><input type="text" value={details.username} className='w-96 h-10 border-b p-2 ' />
+                <span className="material-icons absolute right-1" onClick={() => setAction({ ...action, username: "", button: "" })}>
                   edit
                 </span>
               </div>
 
               <div className={`relative mt-2 ${action.username}`}>
-             <input type="text" name='username' placeholder='Edit username ...' className="w-96 h-10 border-2 p-2 border-red-300 " onChange={handleDetails} />
-                <span className="material-icons absolute text-2xl right-1" onClick={()=>setAction({...action,username:"hidden"})}>
+                <input type="text" name='username' placeholder='Edit username ...' className="w-96 h-10 border-2 p-2 border-red-300 " onChange={handleDetails} />
+                <span className="material-icons absolute text-2xl right-1" onClick={() => setAction({ ...action, username: "hidden" })}>
                   save
                 </span>
               </div>
               <div className='relative '>
-              <span className="font-semibold text-lg">Mobile : </span>  
-              <input type="tel"  value={details.mobile} className='mt-5 w-96 h-10 border-b p-2'/>
-              <span className="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,mobile:"",button:""})}>
+                <span className="font-semibold text-lg">Mobile : </span>
+                <input type="tel" value={details.mobile} className='mt-5 w-96 h-10 border-b p-2' />
+                <span className="material-icons absolute right-1 top-5" onClick={() => setAction({ ...action, mobile: "", button: "" })}>
                   edit
                 </span>
               </div>
               <div className={`relative mt-2 ${action.mobile}`}>
-              <input type="tel" name='mobile' placeholder='Edit Mobile Number ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
-              <span className="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,mobile:"hidden"})}>
+                <input type="tel" name='mobile' placeholder='Edit Mobile Number ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
+                <span className="material-icons absolute text-2xl right-1 top-6" onClick={() => setAction({ ...action, mobile: "hidden" })}>
                   save
                 </span>
               </div>
               <div className='relative '>
-              <span className="font-semibold text-lg">Email : </span>  
-              <input type="email" value={details.email} className='mt-5 w-96 h-10 border-b p-2'  />
-              <span className="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,email:"",button:""})}>
+                <span className="font-semibold text-lg">Email : </span>
+                <input type="email" value={details.email} className='mt-5 w-96 h-10 border-b p-2' />
+                <span className="material-icons absolute right-1 top-5" onClick={() => setAction({ ...action, email: "", button: "" })}>
                   edit
                 </span>
               </div>
               <div className={`relative mt-2 ${action.email}`}>
-              <input type="email" name='email' placeholder='Edit email ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
-              <span className="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,email:"hidden"})}>
+                <input type="email" name='email' placeholder='Edit email ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
+                <span className="material-icons absolute text-2xl right-1 top-6" onClick={() => setAction({ ...action, email: "hidden" })}>
                   save
                 </span>
               </div>
 
               <div className='relative '>
-              <span className="font-semibold text-lg">Location : </span>  
-              <input value={details.location} className='mt-5 w-96 h-10 border-b p-2'  />
-              <span className="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,location:"",button:""})}>
+                <span className="font-semibold text-lg">Location : </span>
+                <input value={details.location} className='mt-5 w-96 h-10 border-b p-2' />
+                <span className="material-icons absolute right-1 top-5" onClick={() => setAction({ ...action, location: "", button: "" })}>
                   edit
                 </span>
               </div>
               <div className={`relative mt-2 ${action.location}`}>
-              <input type="text" name='location' placeholder='Edit Location ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
-              <span className="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,location:"hidden"})}>
+                <input type="text" name='location' placeholder='Edit Location ...' className='mt-5 w-96 h-10 border-2 border-red-300 p-2' onChange={handleDetails} />
+                <span className="material-icons absolute text-2xl right-1 top-6" onClick={() => setAction({ ...action, location: "hidden" })}>
                   save
                 </span>
-              </div>  
+              </div>
               <div className='relative '>
-              <span className="font-semibold text-lg">Profession : </span>                 
-              <input type="text" value={details.profession} className='mt-5 w-96 h-10 border-b p-2 '  />
-              <span className="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,profession:"",button:""})}>
+                <span className="font-semibold text-lg">Profession : </span>
+                <input type="text" value={details.profession} className='mt-5 w-96 h-10 border-b p-2 ' />
+                <span className="material-icons absolute right-1 top-5" onClick={() => setAction({ ...action, profession: "", button: "" })}>
                   edit
                 </span>
-                </div>    
-                <div className={`relative mt-2 ${action.profession}`}>
+              </div>
+              <div className={`relative mt-2 ${action.profession}`}>
                 <input type="text" name='profession' placeholder='Edit Profession ...' className='mt-5 w-96 h-10 border-2 p-2 border-red-300' onChange={handleDetails} />
-                <span className="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,profession:"hidden"})}>
+                <span className="material-icons absolute text-2xl right-1 top-6" onClick={() => setAction({ ...action, profession: "hidden" })}>
                   save
                 </span>
-                  </div>        
-                  <div className='relative '>
-                  <span className="font-semibold text-lg">Address : </span>  
-                  <input type="text" value={details.address} className='mt-5 w-96 h-10 border-b p-2'/>
-                  <span className="material-icons absolute right-1 top-5" onClick={()=>setAction({...action,address:"",button:""})}>
+              </div>
+              <div className='relative '>
+                <span className="font-semibold text-lg">Address : </span>
+                <input type="text" value={details.address} className='mt-5 w-96 h-10 border-b p-2' />
+                <span className="material-icons absolute right-1 top-5" onClick={() => setAction({ ...action, address: "", button: "" })}>
                   edit
                 </span>
-             </div>
-             <div className={`relative mt-2 ${action.address}`}>
-             <input type="text" name='address' placeholder='Edit Address ...' className='mt-5 w-96 h-10 border-2 p-2 border-red-300' onChange={handleDetails} />
-             <span className="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,address:"hidden"})}>
+              </div>
+              <div className={`relative mt-2 ${action.address}`}>
+                <input type="text" name='address' placeholder='Edit Address ...' className='mt-5 w-96 h-10 border-2 p-2 border-red-300' onChange={handleDetails} />
+                <span className="material-icons absolute text-2xl right-1 top-6" onClick={() => setAction({ ...action, address: "hidden" })}>
                   save
                 </span>
-             </div>
-             <div className='relative '> 
-             <span className="font-semibold text-lg">BIO : </span>
-             <input type="text" value={details.bio} className='mt-5 w-96 h-10 border-b p-2'/>
-             <span className="material-icons absolute  top-5" onClick={()=>setAction({...action,bio:"",button:""})}>
+              </div>
+              <div className='relative '>
+                <span className="font-semibold text-lg">BIO : </span>
+                <input type="text" value={details.bio} className='mt-5 w-96 h-10 border-b p-2' />
+                <span className="material-icons absolute  top-5" onClick={() => setAction({ ...action, bio: "", button: "" })}>
                   edit
                 </span>
-               </div>
-               <div className={`relative mt-2 ${action.bio}`}>
-               <textarea name="bio" id="" cols="10" rows="3" className='border-2 w-96 mt-5 p-2 border-red-300 ' placeholder='Edit bio...' onChange={handleDetails}></textarea>
-               <span className="material-icons absolute text-2xl right-1 top-6" onClick={()=>setAction({...action,bio:"hidden"})}>
+              </div>
+              <div className={`relative mt-2 ${action.bio}`}>
+                <textarea name="bio" id="" cols="10" rows="3" className='border-2 w-96 mt-5 p-2 border-red-300 ' placeholder='Edit bio...' onChange={handleDetails}></textarea>
+                <span className="material-icons absolute text-2xl right-1 top-6" onClick={() => setAction({ ...action, bio: "hidden" })}>
                   save
                 </span>
-               </div>        
-             <button className={`mt-8 px-8 py-1 bg-red-500 text-white text-xl font-semibold hover:bg-black ${action.button}`} onClick={saveProfile}>Save</button>
+              </div>
+              <button className={`mt-8 px-8 py-1 bg-red-500 text-white text-xl rounded-3xl font-semibold hover:bg-black ${action.button}`} onClick={saveProfile}>Save</button>
             </div>
 
           </div>
           <div className='hidden 2xl:block w-full h-full flex justify-center'>
-            <img  src="../Assets/edit.svg" alt="edit" />
+            <img src="../Assets/edit.svg" alt="edit" />
           </div>
 
         </div>
-       
+
       </div>
     </>
   )
