@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Country, State, City } from 'country-state-city';
+import { Country, State} from 'country-state-city';
 
 function SelectCountry() {
   const [country, setCountry] = useState("")
