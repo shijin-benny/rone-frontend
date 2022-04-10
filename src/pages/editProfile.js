@@ -57,9 +57,9 @@ function EditPage() {
         'content-type': 'multipart/form-data'
       }
     }
-    axios.post('https://arclifs-services.herokuapp.com/paymentUser',
+    axios.post('https://rone-card.herokuapp.com/referralDetails',
      {
-       "userId":"TE3MECZoo"
+       "userId":"81"
     }
     ).then((response) => {
       console.log(response);
