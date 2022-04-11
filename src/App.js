@@ -9,7 +9,7 @@ function App() {
 
     <BrowserRouter>
      <Routes>
-       <Route path='/settings/profile' element={<EditPage />}/>
+       {/* <Route path='/settings/profile' element={<EditPage />}/> */}
        <Route path='/' element={<SelectCountry />}/>
      </Routes>
 
