@@ -5,12 +5,14 @@ function SelectCountry() {
   const [allStates, setstates] = useState("")
   const [city, setCity] = useState("")
   const Countries = Country.getAllCountries().map((country) => {
-    return <option key={country.isoCode} value={country.isoCode}>{country.name}</option>
+    return <option key={country.isoCode} value={[country.isoCode,country.name]}>{country.name}</option>
   })
 
   const handleCountry = (e) => {
+      const code = e.target.value.split(",")
+      const countryName = code[1]
     const States = State.getAllStates().filter((state) => {
-      return state.countryCode === e.target.value
+      return state.countryCode === code[0]
     })
     setstates(States)
   }
