@@ -57,9 +57,9 @@ function EditPage() {
         'content-type': 'multipart/form-data'
       }
     }
-    axios.post('https://rone-card.herokuapp.com/referralDetails',
+    axios.post('https://rone-card.herokuapp.com/cardBalance',
      {
-       "userId":"81"
+       "roneId":"RONEGOLDCARD22"
     }
     ).then((response) => {
       console.log(response);

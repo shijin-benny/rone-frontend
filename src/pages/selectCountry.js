@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { Country, State, City } from 'country-state-city';
 
 function SelectCountry() {
-  const [country, setCountry] = useState("")
   const [allStates, setstates] = useState("")
   const [city, setCity] = useState("")
-
-
   const Countries = Country.getAllCountries().map((country) => {
     return <option key={country.isoCode} value={country.isoCode}>{country.name}</option>
   })
 
   const handleCountry = (e) => {
-    setCountry(e.target.value)
-  }
-  useEffect(() => {
     const States = State.getAllStates().filter((state) => {
-      return state.countryCode === country
+      return state.countryCode === e.target.value
     })
     setstates(States)
-  }, [country])
-
-
+  }
 
   let States;
   if (allStates) {
@@ -48,7 +40,6 @@ function SelectCountry() {
   const handlecity = (e) => {
     console.log(e.target.value)
   }
-
 
   return (
     <>
